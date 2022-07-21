@@ -1,0 +1,16 @@
+#1. Tạo môi trường làm việc (env)
+mkdir "$HOME/tmp";cd "$HOME/tmp"
+curl -sS -o prereqs.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/prereqs.sh
+chmod 755 prereqs.sh 
+#2 edit file prereqs.sh 
+#sửa 
+CNODE_NAME='cnodetn'
+#và chạy
+./prereqs.sh -n testnet 
+
+#3 nếu chạy tốt thì cài thành service bằng lệnh
+/opt/cardano/cnodetn/scripts/cnode.sh -d
+
+#lênh stop/start service
+sudo systemctl restart cnodetn
+sudo systemctl status cnodetn
